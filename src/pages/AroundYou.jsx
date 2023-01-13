@@ -26,7 +26,7 @@ const AroundYou = () => {
 
   if (isFetching && loading) return <Loader title="Loading songs around you" />;
 
-  if (error && country) return <Error />;
+  if (error && country !== "") return <Error />;
 
   return (
     <div className="flex flex-col">
@@ -35,7 +35,7 @@ const AroundYou = () => {
         <span className="font-black"> {country}</span>
       </h2>
       <div className="flex flex-wrap sm:justify-start justify-center gap-8">
-        {data.map((song, i) => (
+        {data?.map((song, i) => (
           <SongCard
             key={song.key}
             song={song}
